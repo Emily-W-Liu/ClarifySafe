@@ -1,0 +1,5 @@
+# Additional packages loaded by the pinned AppWorld upstream agent runner.
+litellm==1.80.0
+jsonnet==0.22.0
+jinja2==3.1.6
+joblib==1.6.0

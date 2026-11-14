@@ -50,3 +50,10 @@ PYTHONPATH=src .venv-appworld/bin/python scripts/demo_tool_agent.py
 | 前端接口契约 | `examples/handoff/openapi.json` |
 
 每位组员从 `main` 创建自己的分支，完成变更后通过 Pull Request 合并。前端对接以 OpenAPI 契约为准。AppWorld 由其官方仓库提供。引用可见 [AppWorld 论文](https://aclanthology.org/2024.acl-long.850/)。
+
+## 正式实验
+
+- [最终实验报告](reports/final-experiments.md)
+- [评测数据与许可](data/README.md)
+- [评测代码使用方式](docs/experiments.md)
+- [实验结果图和架构图](figures/)

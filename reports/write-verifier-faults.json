@@ -1,0 +1,29 @@
+{
+  "fixture": "Fixed approved plan, real local AppWorld state, no language model calls",
+  "summary": {
+    "acknowledged_without_write": {
+      "catalog": {
+        "cases": 3,
+        "handled": 3,
+        "claimed_completion": 0
+      },
+      "no-verifier": {
+        "cases": 3,
+        "handled": 0,
+        "claimed_completion": 3
+      }
+    },
+    "committed_with_timeout": {
+      "catalog": {
+        "cases": 3,
+        "handled": 3,
+        "claimed_completion": 0
+      },
+      "no-verifier": {
+        "cases": 3,
+        "handled": 3,
+        "claimed_completion": 0
+      }
+    }
+  }
+}

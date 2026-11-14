@@ -1,0 +1,21 @@
+{
+  "appworld_release": "0.2.0",
+  "appworld_commit": "42b5bcf3cd334fee33f0c37c02070a9f5807add5",
+  "bundle_sha256": "330f077a0f98a8f3008a003a2900971be6f46608dc5228f0d192e2b196a367a0",
+  "case_counts": {
+    "clarifysafe-interactive-v2/development.jsonl": 24,
+    "clarifysafe-interactive-v2/held_out.jsonl": 48,
+    "clarifysafe-risk-controls/held_out.jsonl": 18,
+    "clarifysafe-low-risk-controls/held_out.jsonl": 9
+  },
+  "file_sha256": {
+    "clarifysafe-interactive-v2/development.jsonl": "75b7745d04e7647a0b9ade9af0ea258148ed2d4ca2696c36c7380588c69b847c",
+    "clarifysafe-interactive-v2/held_out.jsonl": "254aff4971a4d6df5a4ed3a9f84e5f5f9fa4831b4bdac07c627916af190bdc8a",
+    "clarifysafe-interactive-v2/manifest.json": "12060ad73d38394ffa8a2170152efdb752c8be0218e66c07da5e9f17753616a6",
+    "clarifysafe-interactive-v2/reference_validation.json": "7eab6800ff2ff2bafe52ba5e790e7497d477e16d0e527ebd5a7bc782835864be",
+    "clarifysafe-risk-controls/held_out.jsonl": "b0467dcafea60ac9c75e4fee64d6ff4d7a0abf3fce055166c238050f16df55a2",
+    "clarifysafe-risk-controls/manifest.json": "dde7d9e61e88fbdfe0fdb68fec151f3d658a70a607f1d28ff1545fb97c702f7a",
+    "clarifysafe-low-risk-controls/held_out.jsonl": "8391e5ca183ce2565a9101172779c159a9730825e2ba2f6411c35d34dba3a74a",
+    "clarifysafe-low-risk-controls/manifest.json": "8659b1ae9acd43cde847945f66e73ca403af7b62cf18b2e1ea5093b60e278961"
+  }
+}
