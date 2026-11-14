@@ -1,0 +1,483 @@
+{
+  "$defs": {
+    "Action": {
+      "additionalProperties": false,
+      "properties": {
+        "tool": {
+          "title": "Tool",
+          "type": "string"
+        },
+        "arguments": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Arguments",
+          "type": "object"
+        }
+      },
+      "required": [
+        "tool",
+        "arguments"
+      ],
+      "title": "Action",
+      "type": "object"
+    },
+    "Approval": {
+      "additionalProperties": false,
+      "properties": {
+        "action_fingerprint": {
+          "title": "Action Fingerprint",
+          "type": "string"
+        },
+        "approved": {
+          "title": "Approved",
+          "type": "boolean"
+        },
+        "source": {
+          "const": "user",
+          "default": "user",
+          "title": "Source",
+          "type": "string"
+        },
+        "approval_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Approval Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Run Id"
+        },
+        "operation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Operation Id"
+        },
+        "policy_digest": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Policy Digest"
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expires At"
+        }
+      },
+      "required": [
+        "action_fingerprint",
+        "approved"
+      ],
+      "title": "Approval",
+      "type": "object"
+    },
+    "Candidate": {
+      "additionalProperties": false,
+      "properties": {
+        "object_id": {
+          "title": "Object Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "user",
+            "application",
+            "model"
+          ],
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_id",
+        "label",
+        "source"
+      ],
+      "title": "Candidate",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "RiskAssessment": {
+      "additionalProperties": false,
+      "properties": {
+        "decision": {
+          "enum": [
+            "act",
+            "ask",
+            "confirm",
+            "decline"
+          ],
+          "title": "Decision",
+          "type": "string"
+        },
+        "reasons": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reasons",
+          "type": "array"
+        },
+        "risk": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ToolRisk"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "decision",
+        "reasons"
+      ],
+      "title": "RiskAssessment",
+      "type": "object"
+    },
+    "TaskState": {
+      "additionalProperties": false,
+      "properties": {
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "instruction": {
+          "title": "Instruction",
+          "type": "string"
+        },
+        "mode": {
+          "default": "scripted_mock",
+          "enum": [
+            "scripted_mock",
+            "llm_mock",
+            "llm_appworld"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "status": {
+          "default": "running",
+          "enum": [
+            "running",
+            "waiting_for_user",
+            "declined",
+            "stopped",
+            "completed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "decision": {
+          "anyOf": [
+            {
+              "enum": [
+                "act",
+                "ask",
+                "confirm",
+                "decline"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decision"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/Candidate"
+          },
+          "title": "Candidates",
+          "type": "array"
+        },
+        "action": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Action"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "approval": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Approval"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "before": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Before",
+          "type": "array"
+        },
+        "verification": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VerificationResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "user_answers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "User Answers",
+          "type": "array"
+        },
+        "clarification_round": {
+          "default": 0,
+          "title": "Clarification Round",
+          "type": "integer"
+        },
+        "question": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question"
+        },
+        "minutes_content": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minutes Content"
+        },
+        "answer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Answer"
+        },
+        "model_metadata": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Model Metadata",
+          "type": "object"
+        },
+        "policy_digest": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Policy Digest"
+        },
+        "risk_assessment": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RiskAssessment"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "step_index": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Step Index",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "instruction"
+      ],
+      "title": "TaskState",
+      "type": "object"
+    },
+    "ToolRisk": {
+      "additionalProperties": false,
+      "description": "Trusted adapter metadata for a bounded tool, never supplied by the model.",
+      "properties": {
+        "externally_visible": {
+          "title": "Externally Visible",
+          "type": "boolean"
+        },
+        "reversible": {
+          "title": "Reversible",
+          "type": "boolean"
+        },
+        "affected_objects": {
+          "minimum": 1,
+          "title": "Affected Objects",
+          "type": "integer"
+        },
+        "required_permissions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required Permissions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "externally_visible",
+        "reversible",
+        "affected_objects",
+        "required_permissions"
+      ],
+      "title": "ToolRisk",
+      "type": "object"
+    },
+    "VerificationResult": {
+      "additionalProperties": false,
+      "properties": {
+        "passed": {
+          "title": "Passed",
+          "type": "boolean"
+        },
+        "checks": {
+          "additionalProperties": {
+            "type": "boolean"
+          },
+          "title": "Checks",
+          "type": "object"
+        }
+      },
+      "required": [
+        "passed",
+        "checks"
+      ],
+      "title": "VerificationResult",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "status": {
+      "title": "Status",
+      "type": "string"
+    },
+    "mode": {
+      "default": "scripted_mock",
+      "enum": [
+        "scripted_mock",
+        "llm_mock",
+        "llm_appworld"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "pending": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Pending"
+    },
+    "state": {
+      "$ref": "#/$defs/TaskState"
+    }
+  },
+  "required": [
+    "run_id",
+    "status",
+    "state"
+  ],
+  "title": "AgentResult",
+  "type": "object"
+}

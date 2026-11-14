@@ -1,0 +1,8 @@
+# Compatibility pins for AppWorld 0.2.0 at 42b5bcf.
+pydantic==2.12.5
+fastapi==0.120.0
+starlette==0.48.0
+# ClarifySafe catalog runner dependencies in the separate AppWorld environment.
+openai==1.99.8
+jsonschema==4.26.0
+python-dotenv==1.2.4

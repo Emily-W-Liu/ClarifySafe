@@ -1,0 +1,19 @@
+from typing import Any, Protocol
+
+from clarifysafe.shared.schemas import Action, ToolSpec
+
+
+class EnvironmentAdapter(Protocol):
+    """Only user-visible observations. No hidden evaluator database access."""
+
+    def get_tool_schemas(self) -> list[ToolSpec]: ...
+    def call_read_tool(self, name: str, arguments: dict[str, Any]) -> Any: ...
+    def call_write_tool(self, action: Action, operation_id: str) -> dict[str, Any]: ...
+    def observe_state(self) -> list[dict[str, Any]]: ...
+
+
+class EvaluationEnvironment(Protocol):
+    """B's reset/scoring capabilities, separate from agent-visible tools."""
+
+    def reset(self, task_id: str) -> None: ...
+    def evaluate(self, task_id: str, trajectory: list[dict]) -> dict: ...

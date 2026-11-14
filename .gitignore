@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+.venv/
+.venv-appworld/
+.appworld/
+.clarifysafe/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+*.sqlite
+*.sqlite-*
+*.log
+.DS_Store
+tmp/
+output/

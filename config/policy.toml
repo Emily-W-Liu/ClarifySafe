@@ -1,0 +1,8 @@
+# Trusted operator configuration, not model output or a user chat message.
+allowed_write_tools = ["send_message"]
+granted_permissions = ["messages.send"]
+confirm_external = true
+confirm_irreversible = true
+confirm_object_count = 2
+max_affected_objects = 10
+approval_ttl_seconds = 300
